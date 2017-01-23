@@ -46,7 +46,8 @@ public class PalindromeChecker
                                 (new InputStreamReader(sock.getInputStream()));
         PrintWriter out = new PrintWriter(sock.getOutputStream(), true);
         out.println("Input a string that you would like to test to see if"
-                + "is a palindrome.\nEnter \"bye\" if you would like to "
+                + "is a palindrome.");
+        out.println("Enter \"bye\" or press enter if you would like to "
                 + "exit the program.");
         out.flush();
 
@@ -62,11 +63,11 @@ public class PalindromeChecker
 
             if (originalString.matches(reversedString))
             {
-                out.println("The string" + cmd + "is a palindrome.");
+                out.println("The string " + cmd + " is a palindrome.");
                 out.flush();
             } else
             {
-                out.println("The string" + cmd + "is not a palindrome");
+                out.println("The string " + cmd + " is not a palindrome");
                 out.flush();
             }
             line = in.readLine();
