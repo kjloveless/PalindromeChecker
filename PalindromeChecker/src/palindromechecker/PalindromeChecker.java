@@ -33,11 +33,22 @@ public class PalindromeChecker
         }
     }
 
+    /**
+     * checkPalindrome takes in a string and prints out if the string is a 
+     * palindrome or not.
+     * @param sock This param is the active socket created when a client 
+     * tries to connect to the server.
+     * @throws IOException 
+     */
     static private void checkPalindrome(Socket sock) throws IOException
     {
         BufferedReader in = new BufferedReader
                                 (new InputStreamReader(sock.getInputStream()));
         PrintWriter out = new PrintWriter(sock.getOutputStream(), true);
+        out.println("Input a string that you would like to test to see if"
+                + "is a palindrome.\nEnter \"bye\" if you would like to "
+                + "exit the program.");
+        out.flush();
 
         String line = in.readLine();
         while (!line.equals("bye"))
@@ -51,11 +62,11 @@ public class PalindromeChecker
 
             if (originalString.matches(reversedString))
             {
-                out.println("The input was a palindrome");
+                out.println("The string" + cmd + "is a palindrome.");
                 out.flush();
             } else
             {
-                out.println("The input was not a palindrome");
+                out.println("The string" + cmd + "is not a palindrome");
                 out.flush();
             }
             line = in.readLine();
